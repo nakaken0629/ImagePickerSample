@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RYA-vz-AjR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--イメージ-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="イメージ" customClass="ViewController" customModule="ImagePickerSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,122 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I8p-Rw-WDn">
+                                <rect key="frame" x="140" y="140" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="tSt-gw-2H7"/>
+                                    <constraint firstAttribute="height" constant="320" id="wuY-a7-wSQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I8p-Rw-WDn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Y3r-CU-RQF"/>
+                            <constraint firstItem="I8p-Rw-WDn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qM5-uh-D0L"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="イメージ" id="2ZZ-7W-YOa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="w0x-EX-9bW">
+                            <connections>
+                                <action selector="open_imagepicker:" destination="BYZ-38-t0r" id="dly-nD-84X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="selectedImage" destination="I8p-Rw-WDn" id="ju8-Ci-tRO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1015" y="997"/>
+        </scene>
+        <!--画像確認-->
+        <scene sceneID="gjs-Sd-6BO">
+            <objects>
+                <viewController storyboardIdentifier="confirm" id="SNx-TM-W6s" userLabel="画像確認" customClass="ConfirmController" customModule="ImagePickerSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sx6-1M-gp9"/>
+                        <viewControllerLayoutGuide type="bottom" id="d0f-Pa-epp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dFH-e4-wng">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xeZ-aH-V24">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J85-ek-HDI">
+                                <rect key="frame" x="0.0" y="548" width="600" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmY-nZ-cIV">
+                                        <rect key="frame" x="16" y="11" width="75" height="30"/>
+                                        <state key="normal" title="キャンセル">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="SNx-TM-W6s" eventType="touchUpInside" id="RPQ-3v-uxp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyw-km-UHn">
+                                        <rect key="frame" x="554" y="11" width="30" height="30"/>
+                                        <state key="normal" title="選択">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirm:" destination="SNx-TM-W6s" eventType="touchUpInside" id="gYI-Nm-Y5H"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lyw-km-UHn" secondAttribute="trailing" constant="16" id="L7K-4I-cdp"/>
+                                    <constraint firstItem="lyw-km-UHn" firstAttribute="centerY" secondItem="J85-ek-HDI" secondAttribute="centerY" id="Ug2-2q-Sd7"/>
+                                    <constraint firstAttribute="height" constant="52" id="W0v-xy-5vK"/>
+                                    <constraint firstItem="fmY-nZ-cIV" firstAttribute="leading" secondItem="J85-ek-HDI" secondAttribute="leading" constant="16" id="n9O-Jp-Zy6"/>
+                                    <constraint firstItem="fmY-nZ-cIV" firstAttribute="centerY" secondItem="J85-ek-HDI" secondAttribute="centerY" id="x6l-B1-n8E"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldRasterize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="J85-ek-HDI" secondAttribute="trailing" constant="-20" id="01x-G1-Gpc"/>
+                            <constraint firstItem="xeZ-aH-V24" firstAttribute="top" secondItem="dFH-e4-wng" secondAttribute="topMargin" id="KJE-Sa-swv"/>
+                            <constraint firstItem="J85-ek-HDI" firstAttribute="leading" secondItem="dFH-e4-wng" secondAttribute="leadingMargin" constant="-20" id="OAJ-Bn-9W8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xeZ-aH-V24" secondAttribute="trailing" constant="-20" id="T08-O6-XKM"/>
+                            <constraint firstItem="xeZ-aH-V24" firstAttribute="leading" secondItem="dFH-e4-wng" secondAttribute="leadingMargin" constant="-20" id="grz-oT-4UH"/>
+                            <constraint firstItem="d0f-Pa-epp" firstAttribute="top" secondItem="J85-ek-HDI" secondAttribute="bottom" id="loQ-bT-gYe"/>
+                            <constraint firstItem="d0f-Pa-epp" firstAttribute="top" secondItem="xeZ-aH-V24" secondAttribute="bottom" id="mU3-P4-Dzl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="controlPanelView" destination="J85-ek-HDI" id="YBN-Lf-tw2"/>
+                        <outlet property="selectedImage" destination="xeZ-aH-V24" id="dvE-dr-qQU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iuR-kv-PUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744" y="997"/>
+        </scene>
+        <!--イメージナビゲーション-->
+        <scene sceneID="2ys-wW-vmv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RYA-vz-AjR" userLabel="イメージナビゲーション" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LlH-Ku-6Jj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="sJ9-EX-b8n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVS-yd-2Hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="997"/>
         </scene>
     </scenes>
 </document>
