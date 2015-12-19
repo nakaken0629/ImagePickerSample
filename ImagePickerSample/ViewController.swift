@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 
     @IBAction func open_imagepicker(sender: UIBarButtonItem) {
+        // フォトライブラリーを開く処理
         let ipc = UIImagePickerController()
         ipc.delegate = self
         ipc.sourceType = .PhotoLibrary
@@ -30,6 +31,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        // フォトライブラリーで画像が選択された時の処理
         guard let confirmController = storyboard?.instantiateViewControllerWithIdentifier("confirm") as? ConfirmController else {
             return
         }
@@ -39,10 +41,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        // フォトライブラリーがキャンセルされた時の処理
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func confirm(confirm: ConfirmController, picker: UIImagePickerController?, selectedImage: UIImage?) {
+        // 確認画面で確認した時の処理
         self.selectedImage.image = selectedImage
         picker?.dismissViewControllerAnimated(true, completion: nil)
     }
